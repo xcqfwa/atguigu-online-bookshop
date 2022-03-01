@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>尚硅谷会员登录页面</title>
-    <base href="http://localhost:8080/book/">
-    <script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+    <%@include file="/pages/common/head.jsp" %>
     <script type="text/javascript">
         // 页面加载完成之后
         $(function () {
@@ -40,10 +39,7 @@
             });
 
         });
-
     </script>
-
-    <link type="text/css" rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
 <div id="login_header">
@@ -88,10 +84,8 @@
         </div>
     </div>
 </div>
-<div id="bottom">
-			<span>
-				尚硅谷书城.Copyright &copy;2015
-			</span>
-</div>
+
+<%@include file="/pages/common/footer.jsp" %>
+
 </body>
 </html>

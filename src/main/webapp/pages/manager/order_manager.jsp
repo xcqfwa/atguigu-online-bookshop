@@ -4,18 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>订单管理</title>
-    <link type="text/css" rel="stylesheet" href="../../static/css/style.css">
+    <%@include file="/pages/common/head.jsp" %>
 </head>
 <body>
 
 <div id="header">
-    <img class="logo_img" alt="" src="../../static/img/logo.gif">
+    <img class="logo_img" alt="" src="static/img/logo.gif">
     <span class="wel_word">订单管理系统</span>
-    <div>
-        <a href="book_manager.jsp">图书管理</a>
-        <a href="order_manager.jsp">订单管理</a>
-        <a href="../../index.jsp">返回商城</a>
-    </div>
+    <%@include file="/pages/common/menu.jsp"%>
+
 </div>
 
 <div id="main">
@@ -50,10 +47,7 @@
     </table>
 </div>
 
-<div id="bottom">
-		<span>
-			尚硅谷书城.Copyright &copy;2015
-		</span>
-</div>
+<%@include file="/pages/common/footer.jsp" %>
+
 </body>
 </html>

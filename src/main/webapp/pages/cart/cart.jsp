@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>购物车</title>
-    <base href="http://localhost:8080/BookStore02/">
-    <link type="text/css" rel="stylesheet" href="static/css/style.css">
+    <%@include file="/pages/common/head.jsp" %>
 </head>
 <body>
 
 <div id="header">
     <img class="logo_img" alt="" src="static/img/logo.gif">
     <span class="wel_word">购物车</span>
-    <div>
-        <span>欢迎<span class="um_span">韩总</span>光临尚硅谷书城</span>
-        <a href="pages/order/order.jsp">我的订单</a>
-        <a href="index.jsp">注销</a>&nbsp;&nbsp;
-        <a href="index.jsp">返回</a>
-    </div>
+    <%@ include file="/pages/common/welcome.jsp" %>
 </div>
 
 <div id="main">
@@ -36,7 +30,6 @@
             <td>60.00</td>
             <td><a href="#">删除</a></td>
         </tr>
-
         <tr>
             <td>母猪的产后护理</td>
             <td>1</td>
@@ -44,7 +37,6 @@
             <td>10.00</td>
             <td><a href="#">删除</a></td>
         </tr>
-
         <tr>
             <td>百年孤独</td>
             <td>1</td>
@@ -52,7 +44,6 @@
             <td>20.00</td>
             <td><a href="#">删除</a></td>
         </tr>
-
     </table>
 
     <div class="cart_info">
@@ -64,10 +55,7 @@
 
 </div>
 
-<div id="bottom">
-		<span>
-			尚硅谷书城.Copyright &copy;2015
-		</span>
-</div>
+<%@include file="/pages/common/footer.jsp" %>
+
 </body>
 </html>
