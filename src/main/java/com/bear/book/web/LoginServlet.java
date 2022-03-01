@@ -1,6 +1,5 @@
 package com.bear.book.web;
 
-import com.bear.book.pojo.User;
 import com.bear.book.service.UserService;
 import com.bear.book.service.impl.UserServiceImpl;
 
@@ -26,10 +25,10 @@ public class LoginServlet extends HttpServlet {
         // 判断用户名密码是否存在
         if (!userService.loginUser(username, password)) {
             System.out.println("用户名或密码错误");
-            req.getRequestDispatcher("/pages/user/login.html").forward(req, resp);
+            req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
             return;
         }
 
-        req.getRequestDispatcher("/pages/user/login_success.html").forward(req, resp);
+        req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
     }
 }

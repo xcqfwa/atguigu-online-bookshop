@@ -14,7 +14,7 @@ public interface UserService {
      * @param password 密码
      * @return true - 用户登录成功
      */
-    public boolean loginUser(String username, String password);
+    boolean loginUser(String username, String password);
 
     /**
      * 用户注册，保存用户信息到数据库
@@ -22,7 +22,7 @@ public interface UserService {
      * @param user User
      * @return true - 用户注册成功
      */
-    public boolean registerUser(User user);
+    boolean registerUser(User user);
 
     /**
      * 验证用户名存在性
@@ -30,5 +30,5 @@ public interface UserService {
      * @param username 用户名
      * @return true - 用户名已存在
      */
-    public boolean existsUsername(String username);
+    boolean existsUsername(String username);
 }

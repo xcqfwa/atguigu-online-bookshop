@@ -3,7 +3,6 @@ package com.bear.book.web;
 import com.bear.book.pojo.User;
 import com.bear.book.service.UserService;
 import com.bear.book.service.impl.UserServiceImpl;
-import org.omg.CORBA.UnknownUserException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,12 +24,12 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         String code = req.getParameter("code");
-
+        String verifyCode = "bear";
         // 验证验证码是否正确
-        if (!"abcd".equalsIgnoreCase(code)) {
+        if (!verifyCode.equalsIgnoreCase(code)) {
             // 验证码不正确，请求转发：跳转到注册页面
             System.out.println("验证码错误");
-            req.getRequestDispatcher("/pages/user/regist.html").forward(req, resp);
+            req.getRequestDispatcher("/pages/user/register.jsp").forward(req, resp);
             return;
         }
 
@@ -38,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
         if (userService.existsUsername(username)) {
             // 用户名已存在不可用
             System.out.println("用户名已存在");
-            req.getRequestDispatcher("/pages/user/regist.html").forward(req, resp);
+            req.getRequestDispatcher("/pages/user/register.jsp").forward(req, resp);
             return;
         }
 
@@ -46,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
         if (userService.registerUser(new User(null, username, password, email))) {
             System.out.println("用户注册成功");
             // 跳转到注册成功界面
-            req.getRequestDispatcher("/pages/user/regist_success.html").forward(req, resp);
+            req.getRequestDispatcher("/pages/user/register_success.jsp").forward(req, resp);
         }
     }
 }

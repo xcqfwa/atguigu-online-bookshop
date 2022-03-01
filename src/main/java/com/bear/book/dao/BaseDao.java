@@ -50,7 +50,7 @@ public abstract class BaseDao {
         Connection connection = null;
         try {
             connection = JdbcUtils.getConnection();
-            return queryRunner.query(connection, sql, new BeanHandler<T>(clazz), args);
+            return queryRunner.query(connection, sql, new BeanHandler<>(clazz), args);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -72,7 +72,7 @@ public abstract class BaseDao {
         Connection connection = null;
         try {
             connection = JdbcUtils.getConnection();
-            return queryRunner.query(connection, sql, new BeanListHandler<T>(clazz), args);
+            return queryRunner.query(connection, sql, new BeanListHandler<>(clazz), args);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

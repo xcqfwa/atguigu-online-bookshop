@@ -14,25 +14,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean loginUser(String username, String password) {
-        if (userDao.queryUserByUsernameAndPassword(username, password) != null) {
-            return true;
-        }
-        return false;
+        return userDao.queryUserByUsernameAndPassword(username, password) != null;
     }
 
     @Override
     public boolean registerUser(User user) {
-        if (userDao.saveUser(user) == 1) {
-            return true;
-        }
-        return false;
+        return userDao.saveUser(user) == 1;
     }
 
     @Override
     public boolean existsUsername(String username) {
-        if (userDao.queryUserByUsername(username) != null) {
-            return true;
-        }
-        return false;
+        return userDao.queryUserByUsername(username) != null;
     }
 }

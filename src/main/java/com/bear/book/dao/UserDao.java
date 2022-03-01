@@ -13,7 +13,7 @@ public interface UserDao {
      * @param username 用户名
      * @return User or null
      */
-    public User queryUserByUsername(String username);
+    User queryUserByUsername(String username);
 
     /**
      * 根据用户名和密码查询用户信息
@@ -22,7 +22,7 @@ public interface UserDao {
      * @param password 密码
      * @return User or null
      */
-    public User queryUserByUsernameAndPassword(String username, String password);
+    User queryUserByUsernameAndPassword(String username, String password);
 
     /**
      * 保存用户信息
@@ -30,5 +30,5 @@ public interface UserDao {
      * @param user User
      * @return -1 表示保存失败，其它表示保存成功
      */
-    public int saveUser(User user);
+    int saveUser(User user);
 }
