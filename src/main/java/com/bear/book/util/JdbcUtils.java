@@ -4,6 +4,7 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 import javax.sql.DataSource;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -14,13 +15,13 @@ import java.util.Properties;
  */
 public class JdbcUtils {
     static DataSource dataSource;
-    static String path = "D:\\Bear\\Project\\book\\druid.properties";
 
     // Read the config info from config file
     static {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream(path));
+            InputStream resourceAsStream = JdbcUtils.class.getClassLoader().getResourceAsStream("druid.properties");
+            properties.load(resourceAsStream);
             dataSource = DruidDataSourceFactory.createDataSource(properties);
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,13 +52,6 @@ public class JdbcUtils {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void main(String[] args) throws SQLException {
-        Connection connection = JdbcUtils.getConnection();
-        System.out.println(connection);
-        JdbcUtils.close(connection);
-
     }
 }
 
