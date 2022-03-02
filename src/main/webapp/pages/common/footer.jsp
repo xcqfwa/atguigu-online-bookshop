@@ -7,5 +7,5 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <div id="bottom">
-    <span>尚硅谷书城.Copyright &copy;2015</span>
+    <span>Spring-_-Bear.Copyright &copy; 2022</span>
 </div>

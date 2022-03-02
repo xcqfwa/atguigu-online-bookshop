@@ -61,19 +61,21 @@
                 </div>
                 <div class="msg_cont">
                     <b></b>
-                    <span class="errorMsg"><%=request.getAttribute("msg") == null ? "请输入用户名和密码" : request.getAttribute("msg")%></span>
+                    <span class="errorMsg">
+                        ${ empty requestScope.msg ? "请输入用户名和密码":requestScope.msg}
+                    </span>
                 </div>
                 <div class="form">
                     <form action="userServlet" method="post">
                         <label>用户名称：</label>
-                        <input class="inputText" type="text" placeholder="请输入用户名" autocomplete="off"
-                               value="<%=request.getAttribute("username")==null?"":request.getAttribute("username")%>"
-                               tabindex="1" name="username" id="username"/>
+                        <label for="username"></label><input class="inputText" type="text" placeholder="请输入用户名" autocomplete="off"
+                                                             value="${ requestScope.username }"
+                                                             tabindex="1" name="username" id="username"/>
                         <br/>
                         <br/>
                         <label>用户密码：</label>
-                        <input class="inputText" type="password" placeholder="请输入密码" autocomplete="off" tabindex="1"
-                               name="password" id="password"
+                        <label for="password"></label><input class="inputText" type="password" placeholder="请输入密码" autocomplete="off" tabindex="1"
+                                                             name="password" id="password"
                         />
                         <br/>
                         <br/>

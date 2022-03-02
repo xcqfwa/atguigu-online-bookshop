@@ -28,7 +28,8 @@
 </div>
 
 <div id="main">
-    <form action="pages/manager/book_manager.jsp">
+    <form action="manager/bookServlet?&id=${requestScope.book.id}" method="post">
+        <input type="hidden" name="action" value="${empty requestScope.book ? "add" : "update"}"/>
         <table>
             <tr>
                 <td>名称</td>
@@ -40,19 +41,19 @@
             </tr>
             <tr>
                 <td><label>
-                    <input name="book_name" type="text" value="时间简史"/>
+                    <input name="name" type="text" value="${requestScope.book.name}"/>
                 </label></td>
                 <td><label>
-                    <input name="book_price" type="text" value="30.00"/>
+                    <input name="price" type="text" value="${requestScope.book.price}"/>
                 </label></td>
                 <td><label>
-                    <input name="book_author" type="text" value="霍金"/>
+                    <input name="author" type="text" value="${requestScope.book.author}"/>
                 </label></td>
                 <td><label>
-                    <input name="book_sales" type="text" value="200"/>
+                    <input name="sales" type="text" value="${requestScope.book.sales}"/>
                 </label></td>
                 <td><label>
-                    <input name="book_stock" type="text" value="300"/>
+                    <input name="stock" type="text" value="${requestScope.book.stock}"/>
                 </label></td>
                 <td><input type="submit" value="提交"/></td>
             </tr>
