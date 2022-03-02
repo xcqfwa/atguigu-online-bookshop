@@ -3,6 +3,7 @@ package com.bear.book.web;
 import com.bear.book.pojo.User;
 import com.bear.book.service.UserService;
 import com.bear.book.service.impl.UserServiceImpl;
+import com.bear.book.util.BeanUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,10 +26,14 @@ public class UserServlet extends BaseServlet {
      * @throws IOException      none
      */
     protected void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+        User user = BeanUtils.copyParamsToBean(new User(), req.getParameterMap());
+
         // 获取请求的参数
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        String email = req.getParameter("email");
+        String username = user.getUsername();
+        String password = user.getPassword();
+        String email = user.getEmail();
         String code = req.getParameter("code");
         String verifyCode = "bear";
 
@@ -68,14 +73,12 @@ public class UserServlet extends BaseServlet {
      * @throws IOException      none
      */
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 获取请求的参数
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
+        User user = BeanUtils.copyParamsToBean(new User(), req.getParameterMap());
 
         // 判断用户名密码是否正确
-        if (!userService.loginUser(username, password)) {
+        if (!userService.loginUser(user.getUsername(), user.getPassword())) {
             req.setAttribute("msg", "用户名或密码错误");
-            req.setAttribute("username", username);
+            req.setAttribute("username", user.getUsername());
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
             return;
         }
