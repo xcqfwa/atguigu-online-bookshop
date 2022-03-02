@@ -3,7 +3,7 @@ package com.bear.book.web;
 import com.bear.book.pojo.User;
 import com.bear.book.service.UserService;
 import com.bear.book.service.impl.UserServiceImpl;
-import com.bear.book.util.BeanUtils;
+import com.bear.book.util.WebUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +28,7 @@ public class UserServlet extends BaseServlet {
     protected void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        User user = BeanUtils.copyParamsToBean(new User(), req.getParameterMap());
+        User user = WebUtils.copyParamsToBean(new User(), req.getParameterMap());
 
         // 获取请求的参数
         String username = user.getUsername();
@@ -73,7 +73,7 @@ public class UserServlet extends BaseServlet {
      * @throws IOException      none
      */
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = BeanUtils.copyParamsToBean(new User(), req.getParameterMap());
+        User user = WebUtils.copyParamsToBean(new User(), req.getParameterMap());
 
         // 判断用户名密码是否正确
         if (!userService.loginUser(user.getUsername(), user.getPassword())) {

@@ -46,4 +46,20 @@ public class BookDaoTest {
             System.out.println(book);
         }
     }
+
+    @Test
+    public void queryBooksTotalCount() {
+        int i = bookDao.queryBooksTotalCount();
+        System.out.println(i);
+    }
+
+    @Test
+    public void querySpecifiedBooks() {
+        int begin = 5;
+        int offset = 5;
+        List<Book> books = bookDao.queryPageItems(begin, offset);
+        for (Book book : books) {
+            System.out.println(book);
+        }
+    }
 }

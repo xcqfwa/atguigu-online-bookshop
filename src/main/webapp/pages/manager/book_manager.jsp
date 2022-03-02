@@ -14,8 +14,21 @@
             // 在事件的 function 函数中，有一个 this 对象，这个 this 对象是当前正在响应事件的 dom 对象
             $("a.deleteClass").click(function () {
                 return confirm("您确定要删除《" + $(this).parent().parent().find("td:first").text() + "》这本书吗？")
-            })
-        })
+            });
+        });
+
+        $(function () {
+            // 给跳转到第 x 页按钮绑定单击事件
+            $("#specifiedPage").click(function () {
+                let specifiedPageNo = $("#pn_input").val();
+                if (specifiedPageNo < 1 || specifiedPageNo > ${requestScope.page.pageTotal}) {
+                    alert("您输入的页码数无效，请检查后重新输入");
+                    return;
+                }
+                // JavaScript 语言中提供了一个 location 对象，它的属性 href 可以获取浏览器中的地址，可读可写
+                location.href = "manager/bookServlet?action=page&pageNo=" + specifiedPageNo;
+            });
+        });
     </script>
 
 </head>
@@ -39,7 +52,7 @@
             <td colspan="2">操作</td>
         </tr>
 
-        <c:forEach items="${requestScope.books}" var="book">
+        <c:forEach items="${requestScope.page.items}" var="book">
             <tr>
                 <td>${book.name}</td>
                 <td>${book.author}</td>
@@ -61,6 +74,26 @@
             <td><a href="pages/manager/book_edit.jsp">添加图书</a></td>
         </tr>
     </table>
+
+    <div id="page_nav">
+        <br/>
+
+        <c:if test="${requestScope.page.pageNo > 1}">
+            <a href="manager/bookServlet?action=page&pageNo=1">首页</a>
+            <a href="manager/bookServlet?action=page&pageNo=${requestScope.page.pageNo - 1}">上一页</a>
+        </c:if>
+        <%--        <a href="#">3</a>--%>
+        【${requestScope.page.pageNo}】
+        <%--        <a href="#">5</a>--%>
+        <c:if test="${requestScope.page.pageNo < requestScope.page.pageTotal}">
+            <a href="manager/bookServlet?action=page&pageNo=${requestScope.page.pageNo + 1}">下一页</a>
+            <a href="manager/bookServlet?action=page&pageNo=${requestScope.page.pageTotal}">末页</a>
+        </c:if>
+        <br/>
+        共&nbsp;${requestScope.page.pageTotal}&nbsp;页,${requestScope.page.recordTotalCount}条记录&nbsp;&nbsp;&nbsp;第<label
+            for="pn_input"></label><input value="${requestScope.page.pageNo}" name="pn" id="pn_input"/>页
+        <input type="button" value="确定" id="specifiedPage">
+    </div>
 </div>
 
 <%@include file="/pages/common/footer.jsp" %>

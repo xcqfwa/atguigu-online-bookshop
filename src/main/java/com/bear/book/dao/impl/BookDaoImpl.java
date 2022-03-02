@@ -3,6 +3,7 @@ package com.bear.book.dao.impl;
 import com.bear.book.dao.BaseDao;
 import com.bear.book.dao.BookDao;
 import com.bear.book.pojo.Book;
+import com.bear.book.util.WebUtils;
 
 import java.util.List;
 
@@ -40,5 +41,18 @@ public class BookDaoImpl extends BaseDao implements BookDao {
     public List<Book> queryAllBooks() {
         String sql = "SELECT `id`, `name`, `author`, `price`, `sales`, `stock`,  `img_path` `imgPath` FROM `t_book`;";
         return queryForList(Book.class, sql);
+    }
+
+    @Override
+    public int queryBooksTotalCount() {
+        String sql = "SELECT COUNT(*) FROM `t_book`;";
+        Object o = queryForSingleValue(sql);
+        return WebUtils.stringToInteger(o.toString(), 0);
+    }
+
+    @Override
+    public List<Book> queryPageItems(int begin, int offset) {
+        String sql = "SELECT `id`, `name`, `author`, `price`, `sales`, `stock`,  `img_path` `imgPath` FROM `t_book` LIMIT ?,?;";
+        return queryForList(Book.class, sql, begin, offset);
     }
 }

@@ -7,7 +7,7 @@ import java.util.Map;
  * @author Spring-_-Bear
  * @datetime 2022/3/2 8:41
  */
-public class BeanUtils {
+public class WebUtils {
     /**
      * Let the form request parameters into a java bean project
      *
@@ -22,5 +22,20 @@ public class BeanUtils {
             e.printStackTrace();
         }
         return bean;
+    }
+
+    /**
+     * 将 String 类型转换为 Integer
+     *
+     * @param string       String
+     * @param defaultValue 转换失败时返回的默认值
+     * @return Integer
+     */
+    public static int stringToInteger(String string, int defaultValue) {
+        try {
+            return Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
     }
 }

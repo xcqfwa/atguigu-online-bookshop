@@ -47,4 +47,20 @@ public interface BookDao {
      * @return 图书对象集合
      */
     List<Book> queryAllBooks();
+
+    /**
+     * 查询图书总记录数
+     *
+     * @return 图书记录总数
+     */
+    int queryBooksTotalCount();
+
+    /**
+     * 查询指定位置和偏移量的图书记录
+     *
+     * @param begin    指定位置
+     * @param offset 偏移量
+     * @return 指定范围的图书记录
+     */
+    List<Book> queryPageItems(int begin, int offset);
 }

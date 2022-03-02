@@ -1,6 +1,7 @@
 package com.bear.book.service;
 
 import com.bear.book.pojo.Book;
+import com.bear.book.pojo.Page;
 
 import java.util.List;
 
@@ -47,4 +48,13 @@ public interface BookService {
      * @return 图书对象集合
      */
     List<Book> queryAllBooks();
+
+    /**
+     * 根据当前页码号和当前页显示数据个数获得 Page 对象
+     *
+     * @param pageNo   当前页码
+     * @param pageSize 每页显示的个数
+     * @return Page<Book>
+     */
+    Page<Book> page(int pageNo, int pageSize);
 }
