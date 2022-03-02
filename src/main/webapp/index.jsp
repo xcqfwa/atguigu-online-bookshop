@@ -23,8 +23,8 @@
     <div id="book">
         <div class="book_cond">
             <form action="" method="get">
-                价格：<input id="min" type="text" name="min" value=""/> 元 -
-                <input id="max" type="text" name="max" value=""/> 元
+                价格：<label for="min"></label><input id="min" type="text" name="min" value=""/> 元 -
+                <label for="max"></label><input id="max" type="text" name="max" value=""/> 元
                 <input type="submit" value="查询"/>
             </form>
         </div>
@@ -167,7 +167,7 @@
         <a href="#">5</a>
         <a href="#">下一页</a>
         <a href="#">末页</a>
-        共10页，30条记录 到第<input value="4" name="pn" id="pn_input"/>页
+        共10页，30条记录 到第<label for="pn_input"></label><input value="4" name="pn" id="pn_input"/>页
         <input type="button" value="确定">
     </div>
 

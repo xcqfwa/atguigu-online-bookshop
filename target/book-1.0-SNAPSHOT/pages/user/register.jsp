@@ -47,7 +47,7 @@
                 // 获取用户名
                 let emailValue = $("#email").val();
                 // 验证邮件输入是否合法。
-                let emailReg = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+                let emailReg = /^([a-z0-9_-]+)@([\da-z-]+)\.([a-z]{2,6})$/;
 
                 if (!emailReg.test(emailValue)) {
                     // 提示用户
@@ -99,29 +99,29 @@
                 <div class="form">
                     <form action="userServlet" method="post">
                         <label>用户名称：</label>
-                        <input class="inputText" type="text" placeholder="请输入用户名" autocomplete="off"
-                               tabindex="1" name="username" id="username"
-                               value="<%=request.getAttribute("username")==null?"":request.getAttribute("username")%>"/>
+                        <label for="username"></label><input class="inputText" type="text" placeholder="请输入用户名" autocomplete="off"
+                                                             tabindex="1" name="username" id="username"
+                                                             value="<%=request.getAttribute("username")==null?"":request.getAttribute("username")%>"/>
                         <br/>
                         <br/>
                         <label>用户密码：</label>
-                        <input class="inputText" type="password" placeholder="请输入密码" autocomplete="off"
-                               tabindex="1" name="password" id="password"/>
+                        <label for="password"></label><input class="inputText" type="password" placeholder="请输入密码" autocomplete="off"
+                                                             tabindex="1" name="password" id="password"/>
                         <br/>
                         <br/>
                         <label>确认密码：</label>
-                        <input class="inputText" type="password" placeholder="确认密码" autocomplete="off"
-                               tabindex="1" name="repeatPwd" id="repeatPwd"/>
+                        <label for="repeatPwd"></label><input class="inputText" type="password" placeholder="确认密码" autocomplete="off"
+                                                              tabindex="1" name="repeatPwd" id="repeatPwd"/>
                         <br/>
                         <br/>
                         <label>电子邮件：</label>
-                        <input class="inputText" type="text" placeholder="请输入邮箱地址" autocomplete="off"
-                               tabindex="1" name="email" id="email"
-                               value="<%=request.getAttribute("email")==null?"":request.getAttribute("email")%>"/>
+                        <label for="email"></label><input class="inputText" type="text" placeholder="请输入邮箱地址" autocomplete="off"
+                                                          tabindex="1" name="email" id="email"
+                                                          value="<%=request.getAttribute("email")==null?"":request.getAttribute("email")%>"/>
                         <br/>
                         <br/>
                         <label>验证码：</label>
-                        <input class="inputText" type="text" style="width: 150px;" id="code" name="code"/>
+                        <label for="code"></label><input class="inputText" type="text" style="width: 150px;" id="code" name="code"/>
                         <img alt="" src="static/img/code.bmp" style=" float: right; margin-right: 40px">
                         <br/>
                         <br/>
