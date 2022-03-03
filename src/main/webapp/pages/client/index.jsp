@@ -6,7 +6,20 @@
     <meta charset="UTF-8">
     <title>书城首页</title>
     <%@include file="/pages/common/head.jsp" %>
-
+    <script type="text/javascript">
+        $(function () {
+            // 给跳转到第 x 页按钮绑定单击事件
+            $("#specifiedPage").click(function () {
+                let specifiedPageNo = $("#pn_input").val();
+                if (specifiedPageNo < 1 || specifiedPageNo > ${requestScope.page.pageTotal}) {
+                    alert("您输入的页码数无效，请检查后重新输入");
+                    return;
+                }
+                // JavaScript 语言中提供了一个 location 对象，它的属性 href 可以获取浏览器中的地址，可读可写
+                location.href = "client/bookServlet?action=pageByPrice&pageNo=" + specifiedPageNo;
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -25,8 +38,8 @@
         <div class="book_cond">
             <form action="client/bookServlet" method="get">
                 <input type="hidden" name="action" value="pageByPrice">
-                价格：<label for="min"></label><input id="min" type="text" name="min" value=""/> 元 -
-                <label for="max"></label><input id="max" type="text" name="max" value=""/> 元
+                价格：<label for="min"></label><input id="min" type="text" name="min" value="${param.min}"/> 元 -
+                <label for="max"></label><input id="max" type="text" name="max" value="${param.max}"/> 元
                 <input type="submit" value="查询"/>
             </form>
         </div>

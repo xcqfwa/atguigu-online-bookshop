@@ -5,7 +5,7 @@
   Time: 19:07
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8"  %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <div id="page_nav">
     <br/>
 
@@ -13,7 +13,8 @@
         <a href="${requestScope.page.url}&pageNo=1">首页</a>
         <a href="${requestScope.page.url}&pageNo=${requestScope.page.pageNo - 1}">上一页</a>
     </c:if>
-    <%-- 页码输出开始 --%>
+
+    <%-- 设置页码显示范围 --%>
     <c:choose>
         <%-- 情况 1：如果总页码小于等于 5 ，页码显示范围是 1 - 总页码 --%>
         <c:when test="${requestScope.page.pageTotal <= 5}">
@@ -41,6 +42,8 @@
             </c:choose>
         </c:when>
     </c:choose>
+
+    <%-- 逐个输出页码 --%>
     <c:forEach begin="${begin}" end="${end}" var="i">
         <%-- 设置当前页码不可点击 --%>
         <c:if test="${i == requestScope.page.pageNo}">
@@ -55,7 +58,7 @@
         <a href="${requestScope.page.url}&pageNo=${requestScope.page.pageNo + 1}">下一页</a>
         <a href="${requestScope.page.url}&pageNo=${requestScope.page.pageTotal}">末页</a>
     </c:if>
-    共&nbsp;${requestScope.page.pageTotal}&nbsp;页,${requestScope.page.recordTotalCount}条记录&nbsp;&nbsp;&nbsp;第<label
+    共&nbsp;${requestScope.page.pageTotal}&nbsp;页 共 ${requestScope.page.recordTotalCount} 条记录&nbsp;&nbsp;&nbsp;第<label
         for="pn_input"></label><input value="${requestScope.page.pageNo}" name="pn" id="pn_input"/>页
     <input type="button" value="确定" id="specifiedPage">
 </div>

@@ -80,7 +80,6 @@
 
     <%-- 静态包含引入分页条 --%>
     <%@include file="/pages/common/page_nav.jsp" %>
-
 </div>
 
 <%@include file="/pages/common/footer.jsp" %>
