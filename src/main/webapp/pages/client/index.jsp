@@ -15,8 +15,11 @@
                     alert("您输入的页码数无效，请检查后重新输入");
                     return;
                 }
+                $("#min").val(${param.min});
+                $("#max").val(${param.max});
+
                 // JavaScript 语言中提供了一个 location 对象，它的属性 href 可以获取浏览器中的地址，可读可写
-                location.href = "client/bookServlet?action=pageByPrice&pageNo=" + specifiedPageNo;
+                location.href = "client/bookServlet?action=pageByPrice&min=" + ${param.min}+"&max=" + ${param.max}+"&pageNo=" + specifiedPageNo;
             });
         });
     </script>
