@@ -62,4 +62,18 @@ public class BookDaoTest {
             System.out.println(book);
         }
     }
+
+    @Test
+    public void queryBooksCountByPrice() {
+        int i = bookDao.queryBooksRecordTotalByPrice(0, 100);
+        System.out.println(i);
+    }
+
+    @Test
+    public void queryPageItemsByPrice() {
+        List<Book> books = bookDao.queryPageItemsByPrice(0, 5, 0, 100);
+        for (Book book : books) {
+            System.out.println(book);
+        }
+    }
 }

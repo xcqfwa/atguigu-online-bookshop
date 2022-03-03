@@ -25,15 +25,15 @@ public class WebUtils {
     }
 
     /**
-     * 将 String 类型转换为 Integer
+     * 将 Object 类型转换为 Integer
      *
-     * @param string       String
+     * @param obj          Object
      * @param defaultValue 转换失败时返回的默认值
      * @return Integer
      */
-    public static int stringToInteger(String string, int defaultValue) {
+    public static int objectToString(Object obj, int defaultValue) {
         try {
-            return Integer.parseInt(string);
+            return Integer.parseInt(String.valueOf(obj));
         } catch (NumberFormatException e) {
             return defaultValue;
         }

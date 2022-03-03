@@ -57,4 +57,15 @@ public interface BookService {
      * @return Page<Book>
      */
     Page<Book> page(int pageNo, int pageSize);
+
+    /**
+     * 根据指定的指定的当前页码、每页显示的图书数据数量以及图书最低最高价格查询获取相关图书数据
+     *
+     * @param pageNo   当前页码
+     * @param pageSize 每页显示的图书数据数量
+     * @param minPrice 图书最低价格
+     * @param maxPrice 图书最高价格
+     * @return 图书对象
+     */
+    Page<Book> pageByPrice(int pageNo, int pageSize, int minPrice, int maxPrice);
 }

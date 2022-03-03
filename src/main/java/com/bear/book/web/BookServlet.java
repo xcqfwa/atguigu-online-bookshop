@@ -21,12 +21,14 @@ public class BookServlet extends BaseServlet {
 
     protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 1. 获取客户端请求的参数：当前页和每页显示的数量
-        int pageNo = WebUtils.stringToInteger(req.getParameter("pageNo"), 1);
-        int pageSize = WebUtils.stringToInteger(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        int pageNo = WebUtils.objectToString(req.getParameter("pageNo"), 1);
+        int pageSize = WebUtils.objectToString(req.getParameter("pageSize"), Page.PAGE_SIZE);
         // 2. 调用 BookService 中的方法获取 Page 对象
         Page<Book> page = bookService.page(pageNo, pageSize);
         // 3. 保存到 Request 域中
         req.setAttribute("page", page);
+        // 设置请求的地址为后台
+        page.setUrl("manager/bookServlet?action=page");
         // 4. 请求转发到 pages/manager/book_manager.jsp 页面
         req.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(req, resp);
     }
@@ -44,11 +46,13 @@ public class BookServlet extends BaseServlet {
      * @throws IOException exception
      */
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int pageNo = WebUtils.objectToString(req.getParameter("pageNo"), 0);
+        pageNo++;
         Book book = WebUtils.copyParamsToBean(new Book(), req.getParameterMap());
         if (bookService.addBook(book) == 1) {
             // 请求转发的斜杠 / 表示到 http://ip:port/工程名/
             // 请求重定向的斜杠 / 表示到 http://ip:port/
-            resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
+            resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + pageNo);
         }
     }
 
@@ -60,8 +64,8 @@ public class BookServlet extends BaseServlet {
      * @throws IOException exception
      */
     protected void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        if (bookService.deleteBookById(WebUtils.stringToInteger(req.getParameter("id"), 0)) == 1) {
-            resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
+        if (bookService.deleteBookById(WebUtils.objectToString(req.getParameter("id"), 0)) == 1) {
+            resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + req.getParameter("pageNo"));
         }
     }
 
@@ -76,7 +80,7 @@ public class BookServlet extends BaseServlet {
         Book book = WebUtils.copyParamsToBean(new Book(), req.getParameterMap());
         if (bookService.updateBook(book) == 1) {
             // 请求重定向到图书管理页面
-            resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
+            resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + req.getParameter("pageNo"));
         }
     }
 
@@ -103,7 +107,7 @@ public class BookServlet extends BaseServlet {
      * @throws IOException      exception
      */
     protected void getBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Book book = bookService.queryBookById(WebUtils.stringToInteger(req.getParameter("id"), 0));
+        Book book = bookService.queryBookById(WebUtils.objectToString(req.getParameter("id"), 0));
         req.setAttribute("book", book);
         req.getRequestDispatcher("/pages/manager/book_edit.jsp").forward(req, resp);
     }

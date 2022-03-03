@@ -58,9 +58,29 @@ public interface BookDao {
     /**
      * 查询指定位置和偏移量的图书记录
      *
-     * @param begin    指定位置
+     * @param begin  指定位置
      * @param offset 偏移量
      * @return 指定范围的图书记录
      */
     List<Book> queryPageItems(int begin, int offset);
+
+    /**
+     * 根据图书价格区间查询图书总记录数
+     *
+     * @param minPrice 最低价格
+     * @param maxPrice 最高价格
+     * @return 符合要求的图书记录数量
+     */
+    int queryBooksRecordTotalByPrice(int minPrice, int maxPrice);
+
+    /**
+     * 查询指定起始位置、偏移量以及价格区间的图书记录
+     *
+     * @param begin    起始位置
+     * @param offset   偏移量
+     * @param minPrice 最低价格
+     * @param maxPrice 最高价格
+     * @return 符合要求的图书记录
+     */
+    List<Book> queryPageItemsByPrice(int begin, int offset, int minPrice, int maxPrice);
 }

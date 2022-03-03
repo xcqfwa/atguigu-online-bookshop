@@ -20,7 +20,7 @@ div {
 }
 
 #main {
-    height: 460px;
+    height: 500px;
     width: 1200px;
     border: 1px black solid;
     overflow: auto;

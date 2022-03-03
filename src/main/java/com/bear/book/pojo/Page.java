@@ -31,9 +31,21 @@ public class Page<T> {
      * 当前页数据
      */
     private List<T> items;
+    /**
+     * 请求的地址
+     */
+    private String url;
 
     public Integer getPageNo() {
         return pageNo;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public void setPageNo(Integer pageNo) {
@@ -87,6 +99,7 @@ public class Page<T> {
                 ", pageSize=" + pageSize +
                 ", recordTotalCount=" + recordTotalCount +
                 ", items=" + items +
+                ", url='" + url + '\'' +
                 '}';
     }
 }
