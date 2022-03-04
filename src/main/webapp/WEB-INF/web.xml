@@ -28,6 +28,14 @@
         <url-pattern>/client/bookServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.bear.book.web.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>KaptchaServlet</servlet-name>
         <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
     </servlet>

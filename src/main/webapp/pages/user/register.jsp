@@ -10,6 +10,12 @@
         // 页面加载完成之后
         $(function () {
 
+            // 给验证码图片绑定单击事件
+            $("#code_img").click(function () {
+                // 在事件响应的 function 函数中有一个 this 对象。这个 this 对象是当前正在响应事件的 dom 对象
+                this.src = "${basePath}verifyCode.jpg?date=" + new Date();
+            });
+
             // 给注册按钮添加事件
             $("#sub_btn").click(function () {
 
@@ -99,30 +105,36 @@
                 <div class="form">
                     <form action="userServlet" method="post">
                         <label>用户名称：</label>
-                        <label for="username"></label><input class="inputText" type="text" placeholder="请输入用户名" autocomplete="off"
+                        <label for="username"></label><input class="inputText" type="text" placeholder="请输入用户名"
+                                                             autocomplete="off"
                                                              tabindex="1" name="username" id="username"
                                                              value="${requestScope.username}"/>
                         <br/>
                         <br/>
                         <label>用户密码：</label>
-                        <label for="password"></label><input class="inputText" type="password" placeholder="请输入密码" autocomplete="off"
+                        <label for="password"></label><input class="inputText" type="password" placeholder="请输入密码"
+                                                             autocomplete="off"
                                                              tabindex="1" name="password" id="password"/>
                         <br/>
                         <br/>
                         <label>确认密码：</label>
-                        <label for="repeatPwd"></label><input class="inputText" type="password" placeholder="确认密码" autocomplete="off"
+                        <label for="repeatPwd"></label><input class="inputText" type="password" placeholder="确认密码"
+                                                              autocomplete="off"
                                                               tabindex="1" name="repeatPwd" id="repeatPwd"/>
                         <br/>
                         <br/>
                         <label>电子邮件：</label>
-                        <label for="email"></label><input class="inputText" type="text" placeholder="请输入邮箱地址" autocomplete="off"
+                        <label for="email"></label><input class="inputText" type="text" placeholder="请输入邮箱地址"
+                                                          autocomplete="off"
                                                           tabindex="1" name="email" id="email"
                                                           value="${requestScope.email}"/>
                         <br/>
                         <br/>
                         <label>验证码：</label>
-                        <label for="code"></label><input class="inputText" type="text" style="width: 150px;" id="code" name="code"/>
-                        <img alt="" src="verifyCode.jpg" style=" float: right; margin-right: 20px; width: 100px; height: 35px">
+                        <label for="code"></label><input class="inputText" type="text" style="width: 150px;" id="code"
+                                                         name="code"/>
+                        <img id="code_img" alt="" src="verifyCode.jpg"
+                             style=" float: right; margin-right: 20px; width: 100px; height: 35px">
                         <br/>
                         <br/>
                         <input type="submit" value="注册" id="sub_btn"/>

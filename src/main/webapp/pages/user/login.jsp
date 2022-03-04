@@ -68,15 +68,17 @@
                 <div class="form">
                     <form action="userServlet" method="post">
                         <label>用户名称：</label>
-                        <label for="username"></label><input class="inputText" type="text" placeholder="请输入用户名" autocomplete="off"
-                                                             value="${ requestScope.username }"
+                        <label for="username"></label><input value="admin" class="inputText" type="text"
+                                                             placeholder="请输入用户名" autocomplete="off"
+                    <%-- value="${ requestScope.username }"--%>
                                                              tabindex="1" name="username" id="username"/>
                         <br/>
                         <br/>
                         <label>用户密码：</label>
-                        <label for="password"></label><input class="inputText" type="password" placeholder="请输入密码" autocomplete="off" tabindex="1"
-                                                             name="password" id="password"
-                        />
+                        <label for="password"></label><input class="inputText" type="password" placeholder="请输入密码"
+                                                             autocomplete="off" tabindex="1"
+                                                             name="password" id="password" value="admin"
+                    />
                         <br/>
                         <br/>
                         <input type="submit" value="登录" id="sub_btn"/>

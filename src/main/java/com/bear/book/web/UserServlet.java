@@ -79,7 +79,7 @@ public class UserServlet extends BaseServlet {
         if (userService.registerUser(new User(null, username, password, email))) {
             session.setAttribute("user", user);
             // 跳转到注册成功界面
-            req.getRequestDispatcher("/pages/user/register_success.jsp").forward(req, resp);
+            req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
         }
     }
 
