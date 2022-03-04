@@ -12,9 +12,9 @@ public interface UserService {
      *
      * @param username 用户名
      * @param password 密码
-     * @return true - 用户登录成功
+     * @return 登录成功的 User 信息或 null
      */
-    boolean loginUser(String username, String password);
+    User loginUser(String username, String password);
 
     /**
      * 用户注册，保存用户信息到数据库

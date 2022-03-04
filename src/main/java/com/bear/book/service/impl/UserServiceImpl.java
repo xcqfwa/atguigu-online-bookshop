@@ -13,8 +13,8 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao = new UserDaoImpl();
 
     @Override
-    public boolean loginUser(String username, String password) {
-        return userDao.queryUserByUsernameAndPassword(username, password) != null;
+    public User loginUser(String username, String password) {
+        return userDao.queryUserByUsernameAndPassword(username, password);
     }
 
     @Override

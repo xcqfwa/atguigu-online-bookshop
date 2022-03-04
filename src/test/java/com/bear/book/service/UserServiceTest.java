@@ -15,7 +15,7 @@ public class UserServiceTest {
 
     @Test
     public void loginUser() {
-        if (userService.loginUser("bear", "bear")) {
+        if (userService.loginUser("bear", "bear") != null) {
             System.out.println("登录成功");
         } else {
             System.out.println("登录失败");

@@ -92,18 +92,18 @@ public class UserServlet extends BaseServlet {
      * @throws IOException      none
      */
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = WebUtils.copyParamsToBean(new User(), req.getParameterMap());
-
+        User requestUser = WebUtils.copyParamsToBean(new User(), req.getParameterMap());
+        User queryUser = userService.loginUser(requestUser.getUsername(), requestUser.getPassword());
         // 判断用户名密码是否正确
-        if (!userService.loginUser(user.getUsername(), user.getPassword())) {
+        if (queryUser == null) {
             req.setAttribute("msg", "用户名或密码错误");
-            req.setAttribute("username", user.getUsername());
+            req.setAttribute("username", requestUser.getUsername());
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
             return;
         }
 
         HttpSession session = req.getSession();
-        session.setAttribute("user", user);
+        session.setAttribute("user", queryUser);
         req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
     }
 }
