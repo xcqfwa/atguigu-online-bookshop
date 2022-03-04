@@ -18,25 +18,6 @@ import java.io.IOException;
 public class ClientBookServlet extends BaseServlet {
     private final BookService bookService = new BookServiceImpl();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        doPost(req, resp);
-    }
-
-//    protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        // 1. 获取客户端请求的参数：当前页和每页显示的数量
-//        int pageNo = WebUtils.objectToString(req.getParameter("pageNo"), 1);
-//        int pageSize = WebUtils.objectToString(req.getParameter("pageSize"), Page.PAGE_SIZE);
-//        // 2. 调用 BookService 中的方法获取 Page 对象
-//        Page<Book> page = bookService.page(pageNo, pageSize);
-//        // 3. 保存到 Request 域中
-//        req.setAttribute("page", page);
-//        // 设置请求的地址为前台
-//        page.setUrl("client/bookServlet?action=page");
-//        // 4. 请求转发到 /pages/client/index.jsp 页面
-//        req.getRequestDispatcher("/pages/client/index.jsp").forward(req, resp);
-//    }
-
     /**
      * 通过价格区间获取图书数据设置分页信息
      *

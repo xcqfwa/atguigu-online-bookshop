@@ -122,7 +122,7 @@
                         <br/>
                         <label>验证码：</label>
                         <label for="code"></label><input class="inputText" type="text" style="width: 150px;" id="code" name="code"/>
-                        <img alt="" src="static/img/code.bmp" style=" float: right; margin-right: 40px">
+                        <img alt="" src="verifyCode.jpg" style=" float: right; margin-right: 20px; width: 100px; height: 35px">
                         <br/>
                         <br/>
                         <input type="submit" value="注册" id="sub_btn"/>

@@ -10,7 +10,8 @@
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/userServlet</url-pattern>
-    </servlet-mapping>    <servlet>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>BookServlet</servlet-name>
         <servlet-class>com.bear.book.web.BookServlet</servlet-class>
     </servlet>
@@ -25,5 +26,13 @@
     <servlet-mapping>
         <servlet-name>ClientBookServlet</servlet-name>
         <url-pattern>/client/bookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <url-pattern>/verifyCode.jpg</url-pattern>
     </servlet-mapping>
 </web-app>

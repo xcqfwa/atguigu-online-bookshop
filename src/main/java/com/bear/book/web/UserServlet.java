@@ -4,10 +4,12 @@ import com.bear.book.pojo.User;
 import com.bear.book.service.UserService;
 import com.bear.book.service.impl.UserServiceImpl;
 import com.bear.book.util.WebUtils;
+import com.google.code.kaptcha.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -18,6 +20,21 @@ public class UserServlet extends BaseServlet {
     private final UserService userService = new UserServiceImpl();
 
     /**
+     * 用户注册，跳转到主页
+     *
+     * @param req  HttpServletRequest
+     * @param resp HttpServletResponse
+     * @throws IOException exception
+     */
+    protected void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        // 销毁 Session 对象
+        HttpSession session = req.getSession();
+        session.invalidate();
+        // 请求重定向到主页
+        resp.sendRedirect("index.jsp");
+    }
+
+    /**
      * 用户注册
      *
      * @param req  HttpServletRequest
@@ -26,19 +43,20 @@ public class UserServlet extends BaseServlet {
      * @throws IOException      none
      */
     protected void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
         User user = WebUtils.copyParamsToBean(new User(), req.getParameterMap());
+
+        // 获取谷歌生成的验证码
+        HttpSession session = req.getSession();
+        Object verifyCode = session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
 
         // 获取请求的参数
         String username = user.getUsername();
         String password = user.getPassword();
         String email = user.getEmail();
         String code = req.getParameter("code");
-        String verifyCode = "bear";
 
         // 验证验证码是否正确
-        if (!verifyCode.equalsIgnoreCase(code)) {
+        if (verifyCode == null || !verifyCode.toString().equalsIgnoreCase(code)) {
             // 验证码不正确，请求转发：跳转到注册页面
             req.setAttribute("msg", "验证码错误");
             req.setAttribute("username", username);
@@ -83,6 +101,8 @@ public class UserServlet extends BaseServlet {
             return;
         }
 
+        HttpSession session = req.getSession();
+        session.setAttribute("user", user);
         req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
     }
 }

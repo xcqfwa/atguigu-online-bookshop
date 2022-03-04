@@ -19,6 +19,14 @@ import java.util.List;
 public class BookServlet extends BaseServlet {
     private final BookService bookService = new BookServiceImpl();
 
+    /**
+     * 处理客户端分页氢气去
+     *
+     * @param req HttpServletRequest
+     * @param resp HttpServletResponse
+     * @throws ServletException exception
+     * @throws IOException exception
+     */
     protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 1. 获取客户端请求的参数：当前页和每页显示的数量
         int pageNo = WebUtils.objectToString(req.getParameter("pageNo"), 1);
@@ -31,11 +39,6 @@ public class BookServlet extends BaseServlet {
         page.setUrl("manager/bookServlet?action=page");
         // 4. 请求转发到 pages/manager/book_manager.jsp 页面
         req.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(req, resp);
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        doPost(req, resp);
     }
 
     /**
