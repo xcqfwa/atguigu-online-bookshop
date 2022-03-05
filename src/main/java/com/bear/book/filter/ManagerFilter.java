@@ -16,6 +16,7 @@ public class ManagerFilter implements Filter {
         HttpSession session = req.getSession();
         Object user = session.getAttribute("user");
 
+        // 用户尚未登录，Session 域中暂无用户信息，跳转到登录页面
         if (user == null) {
             req.getRequestDispatcher("/pages/user/login.jsp").forward(servletRequest, servletResponse);
             return;

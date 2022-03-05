@@ -10,6 +10,18 @@
         // 页面加载完成之后
         $(function () {
 
+            // 给用户名输入框绑定失去焦点事件
+            $("#username").blur(function () {
+                let username = this.value;
+                $.getJSON("http://localhost:8080/book/userServlet", "action=ajaxExistsUsername&username=" + username, function (jsonObj) {
+                    if (jsonObj.exists == true) {
+                        $("span.errorMsg").text("用户名已存在，请重新输入");
+                    } else{
+                        $("span.errorMsg").text("");
+                    }
+                });
+            });
+
             // 给验证码图片绑定单击事件
             $("#code_img").click(function () {
                 // 在事件响应的 function 函数中有一个 this 对象。这个 this 对象是当前正在响应事件的 dom 对象

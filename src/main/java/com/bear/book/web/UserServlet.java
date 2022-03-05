@@ -5,12 +5,15 @@ import com.bear.book.service.UserService;
 import com.bear.book.service.impl.UserServiceImpl;
 import com.bear.book.util.WebUtils;
 import com.google.code.kaptcha.Constants;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Spring-_-Bear
@@ -18,6 +21,23 @@ import java.io.IOException;
  */
 public class UserServlet extends BaseServlet {
     private final UserService userService = new UserServiceImpl();
+
+    /**
+     * 使用 AJAX 请求验证用户名存在性
+     *
+     * @param req HttpServletRequest
+     * @param resp HttpServletResponse
+     * @throws IOException exception
+     */
+    protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String username = req.getParameter("username");
+        boolean exists = userService.existsUsername(username);
+        Map<String, Boolean> map = new HashMap<>();
+        map.put("exists", exists);
+        Gson gson = new Gson();
+        String usernameJson = gson.toJson(map);
+        resp.getWriter().write(usernameJson);
+    }
 
     /**
      * 用户注册，跳转到主页

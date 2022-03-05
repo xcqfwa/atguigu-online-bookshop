@@ -4,7 +4,6 @@ import com.bear.book.pojo.User;
 import com.bear.book.service.impl.UserServiceImpl;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 /**
  * @author Spring-_-Bear

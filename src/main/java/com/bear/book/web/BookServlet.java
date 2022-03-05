@@ -22,10 +22,10 @@ public class BookServlet extends BaseServlet {
     /**
      * 处理客户端分页氢气去
      *
-     * @param req HttpServletRequest
+     * @param req  HttpServletRequest
      * @param resp HttpServletResponse
      * @throws ServletException exception
-     * @throws IOException exception
+     * @throws IOException      exception
      */
     protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 1. 获取客户端请求的参数：当前页和每页显示的数量
