@@ -124,6 +124,6 @@ public class UserServlet extends BaseServlet {
 
         HttpSession session = req.getSession();
         session.setAttribute("user", queryUser);
-        req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }

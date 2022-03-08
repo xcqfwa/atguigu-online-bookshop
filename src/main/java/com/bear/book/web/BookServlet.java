@@ -20,11 +20,11 @@ public class BookServlet extends BaseServlet {
     private final BookService bookService = new BookServiceImpl();
 
     /**
-     * 处理客户端分页氢气去
+     * 处理客户端分页
      *
      * @param req  HttpServletRequest
      * @param resp HttpServletResponse
-     * @throws ServletException exception
+     * @throws ServletException exception4
      * @throws IOException      exception
      */
     protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
