@@ -4,8 +4,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>书城首页</title>
+    <title>尚书房</title>
+
     <%@include file="/pages/common/head.jsp" %>
+
     <script type="text/javascript">
         $(function () {
             // 给加入购物车按钮绑定单击事件
@@ -14,10 +16,9 @@
                     alert("请您先进行登录！");
                     return;
                 }
-
                 // 将 this 对象转换为 jQuery 对象并调用获取其指定元素的值
                 let bookId = $(this).attr("bookId");
-                location.href = "http://localhost:8080/book/cartServlet?action=addItem&bookId=" + bookId;
+                location.href = "${basePath}cartServlet?action=addItem&bookId=" + bookId;
             });
 
             // 给跳转到第 x 页按钮绑定单击事件
@@ -35,25 +36,26 @@
             });
         });
     </script>
+
 </head>
 <body>
 
 <div id="header">
     <img class="logo_img" alt="" src="static/img/logo.gif">
-    <span class="wel_word">网上书城</span>
+
     <div>
         <c:if test="${ empty sessionScope.user}">
             <a href="pages/user/login.jsp">登录</a> |
             <a href="pages/user/register.jsp">注册</a> &nbsp;&nbsp;
         </c:if>
         <c:if test="${not empty sessionScope.user}">
-            <span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临尚硅谷书城</span>
+            <span class="um_span">欢迎 ${sessionScope.user.username} 登录！</span>
             <a href="pages/cart/cart.jsp">购物车</a>
-            <a href="pages/order/order.jsp">我的订单</a>
-            <a href="pages/manager/manager.jsp">后台管理</a>
-            <a href="userServlet?action=logout">注销</a>&nbsp;&nbsp;
+            <a href="manage/bookServlet?action=page">图书管理</a>
+            <a href="userServlet?action=logout">退出登录</a>&nbsp;&nbsp;
         </c:if>
     </div>
+
 </div>
 <div id="main">
     <div id="book">
@@ -66,29 +68,31 @@
             </form>
         </div>
 
-        <c:if test="${empty sessionScope.cart.items}">
-            <%-- 购物车为空 --%>
-            <div style="text-align: center">
-                <div>
-                    <span style="color: red">当前购物车为空</span>
+            <c:if test="${empty sessionScope.cart.items}">
+                <%-- 购物车为空 --%>
+                <div style="text-align: center">
+                    <div>
+                        <span style="color: red">当前购物车为空</span>
+                    </div>
                 </div>
-            </div>
-        </c:if>
-        <c:if test="${not empty sessionScope.cart.items}">
-            <div style="text-align: center">
-                <span>您的购物车中有 ${sessionScope.cart.totalCount} 件商品</span>
-                <div>
-                    您刚刚将<span style="color: red">${sessionScope.lastAddName}</span>加入到了购物车中
+            </c:if>
+            <c:if test="${not empty sessionScope.cart.items}">
+                <div style="text-align: center">
+                    <span>您的购物车中有 ${sessionScope.cart.totalCount} 件商品</span>
+                    <div>
+                        您刚刚将<span style="color: red">${sessionScope.lastAddName}</span>加入到了购物车中
+                    </div>
                 </div>
-            </div>
-        </c:if>
+            </c:if>
 
         <%-- 输出图书信息 --%>
         <c:forEach items="${requestScope.page.items}" var="book">
             <div class="b_list">
+
                 <div class="img_div">
                     <img class="book_img" alt="" src="${book.imgPath}"/>
                 </div>
+
                 <div class="book_info">
                     <div class="book_name">
                         <span class="sp1">书名:</span>
@@ -122,8 +126,6 @@
     <%@include file="/pages/common/page_nav.jsp" %>
 
 </div>
-
 <%@include file="/pages/common/footer.jsp" %>
-
 </body>
 </html>

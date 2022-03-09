@@ -7,8 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <div id="page_nav">
-    <br/>
-
     <c:if test="${requestScope.page.pageNo > 1}">
         <a href="${requestScope.page.url}&pageNo=1">首页</a>
         <a href="${requestScope.page.url}&pageNo=${requestScope.page.pageNo - 1}">上一页</a>

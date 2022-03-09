@@ -17,7 +17,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>BookServlet</servlet-name>
-        <url-pattern>/manager/bookServlet</url-pattern>
+        <url-pattern>/manage/bookServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ClientBookServlet</servlet-name>
@@ -58,12 +58,16 @@
     </filter>
     <filter-mapping>
         <filter-name>ManagerFilter</filter-name>
-        <url-pattern>/pages/manager/*</url-pattern>
+        <url-pattern>/pages/manage/*</url-pattern>
         <url-pattern>/manager/bookServlet</url-pattern>
     </filter-mapping>
 
     <error-page>
         <error-code>404</error-code>
         <location>/pages/error/error404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/pages/error/error500.jsp</location>
     </error-page>
 </web-app>

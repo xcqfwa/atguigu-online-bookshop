@@ -23,12 +23,11 @@
 <body>
 <div id="header">
     <img class="logo_img" alt="" src="static/img/logo.gif">
-    <span class="wel_word">编辑图书</span>
-    <%@include file="/pages/common/menu.jsp" %>
+    <%@include file="/pages/common/back.jsp" %>
 </div>
 
 <div id="main">
-    <form action="manager/bookServlet" method="get">
+    <form action="manage/bookServlet" method="get">
         <input type="hidden" name="action" value="${empty requestScope.book ? "add" : "update"}"/>
         <table>
             <tr>

@@ -7,5 +7,5 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <div id="bottom">
-    <span>Spring-_-Bear.Copyright &copy; 2022</span>
+    <span>Spring-_-Bear . Copyright &copy; 2022</span>
 </div>

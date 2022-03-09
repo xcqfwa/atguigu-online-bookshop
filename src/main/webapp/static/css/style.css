@@ -6,12 +6,12 @@ body {
 
 * {
     margin: 0;
-	font-family: "Microsoft Yahei", serif;
+    font-family: "Microsoft Yahei", serif;
     color: #666;
 }
 
 div {
-	margin: 10px auto;
+    margin: 10px auto;
 }
 
 #header {
@@ -112,6 +112,7 @@ div {
 
 /*登录页面CSS样式  */
 
+
 #login_header {
     height: 82px;
     width: 1200px;
@@ -148,7 +149,7 @@ h1 {
 
 .msg_cont {
     background: none repeat scroll 0 0 #fff6d2;
-	color: #666;
+    color: #666;
     height: 18px;
     line-height: 18px;
     padding: 3px 10px 3px 40px;
@@ -171,7 +172,7 @@ h1 {
 .form .inputText {
     border: 0 none;
     float: none;
-	font-family: "宋体", serif;
+    font-family: "宋体", serif;
     font-size: 14px;
     height: 18px;
     line-height: 18px;
@@ -184,7 +185,23 @@ h1 {
     background-color: #39987c;
     border: none;
     color: #fff;
-    width: 360px;
+    width: 170px;
+    height: 40px;
+}#login_btn {
+    background-color: #39987c;
+    border: none;
+    color: #fff;
+    width: 380px;
+    height: 40px;
+}
+
+
+
+#back_login {
+    background-color: #39987c;
+    border: none;
+    color: #fff;
+    width: 170px;
     height: 40px;
 }
 
@@ -225,8 +242,8 @@ h1 {
 
 /*购物车*/
 #main table {
-	margin: 80px auto auto;
-	border-collapse: collapse;
+    margin: 80px auto auto;
+    border-collapse: collapse;
 }
 
 #main table td {
@@ -262,10 +279,23 @@ h1 {
 
 #header div .um_span {
     color: red;
-    font-size: 25px;
+    font-size: 20px;
     margin: 10px;
 }
 
 #header div a {
     color: blue;
+}
+
+/*注册页面*/
+.login_form {
+    height: 420px;
+    margin-top: 25px;
+}
+
+#code_img {
+    float: right;
+    margin-right: 20px;
+    width: 100px;
+    height: 35px
 }

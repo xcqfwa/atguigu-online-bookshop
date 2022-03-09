@@ -33,14 +33,14 @@ public class UserServlet extends BaseServlet {
         String username = req.getParameter("username");
         boolean exists = userService.existsUsername(username);
         Map<String, Boolean> map = new HashMap<>();
-        map.put("exists", exists);
+        map.put("existence", exists);
         Gson gson = new Gson();
         String usernameJson = gson.toJson(map);
         resp.getWriter().write(usernameJson);
     }
 
     /**
-     * 用户注册，跳转到主页
+     * 用户注销登录，跳转到主页
      *
      * @param req  HttpServletRequest
      * @param resp HttpServletResponse

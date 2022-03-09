@@ -15,9 +15,7 @@
             $("a.deleteClass").click(function () {
                 return confirm("您确定要删除《" + $(this).parent().parent().find("td:first").text() + "》这本书吗？")
             });
-        });
 
-        $(function () {
             // 给跳转到第 x 页按钮绑定单击事件
             $("#specifiedPage").click(function () {
                 let specifiedPageNo = $("#pn_input").val();
@@ -26,7 +24,7 @@
                     return;
                 }
                 // JavaScript 语言中提供了一个 location 对象，它的属性 href 可以获取浏览器中的地址，可读可写
-                location.href = "manager/bookServlet?action=page&pageNo=" + specifiedPageNo;
+                location.href = "manage/bookServlet?action=page&pageNo=" + specifiedPageNo;
             });
         });
     </script>
@@ -36,8 +34,7 @@
 
 <div id="header">
     <img class="logo_img" alt="" src="static/img/logo.gif">
-    <span class="wel_word">图书管理系统</span>
-    <%@include file="/pages/common/menu.jsp" %>
+    <%@include file="/pages/common/back.jsp" %>
 
 </div>
 
@@ -59,10 +56,10 @@
                 <td>${book.price}</td>
                 <td>${book.sales}</td>
                 <td>${book.stock}</td>
-                <td><a href="manager/bookServlet?action=getBook&id=${book.id}&pageNo=${requestScope.page.pageNo}">修改</a>
+                <td><a href="manage/bookServlet?action=getBook&id=${book.id}&pageNo=${requestScope.page.pageNo}">修改</a>
                 </td>
                 <td><a class="deleteClass"
-                       href="manager/bookServlet?action=delete&id=${book.id}&pageNo=${requestScope.page.pageNo}">删除</a>
+                       href="manage/bookServlet?action=delete&id=${book.id}&pageNo=${requestScope.page.pageNo}">删除</a>
                 </td>
             </tr>
         </c:forEach>
@@ -74,7 +71,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><a href="pages/manager/book_edit.jsp?pageNo=${requestScope.page.pageTotal}">添加图书</a></td>
+            <td><a href="pages/manage/book_edit.jsp?pageNo=${requestScope.page.pageTotal}">添加图书</a></td>
         </tr>
     </table>
 
