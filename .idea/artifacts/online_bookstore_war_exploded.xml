@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="online-bookstore:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/online_bookstore_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="online-bookstore" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib_onlike_bookstore" />
+          <element id="library" level="module" name="Maven: commons-beanutils-1.8.0:beanutils:1.8.0" module-name="online-bookstore" />
+          <element id="library" level="module" name="Maven: commons-dbutils-1.3:dbutils:1.3" module-name="online-bookstore" />
+          <element id="library" level="module" name="Maven: commons-logging-1.1.1:logging:1.1.1" module-name="online-bookstore" />
+          <element id="library" level="module" name="Maven: druid-1.1.10:druid:1.1.10" module-name="online-bookstore" />
+          <element id="library" level="module" name="Maven: gson-2.2.4:gson:2.2.4" module-name="online-bookstore" />
+          <element id="library" level="module" name="Maven: hamcrest-core-1.3:hamcrest-core:1.3" module-name="online-bookstore" />
+          <element id="library" level="module" name="Maven: junit-4.12:junit:4.12" module-name="online-bookstore" />
+          <element id="library" level="module" name="Maven: kaptcha-2.3.2:kaptcha:kaptcha" module-name="online-bookstore" />
+          <element id="library" level="module" name="Maven: mysql-connector-java-8.0.27:mysql-connector:8.0.27" module-name="online-bookstore" />
+          <element id="library" level="module" name="Maven: taglibs-standard-impl-1.2.1:taglibs-standard-impl:1.2.1" module-name="online-bookstore" />
+          <element id="library" level="module" name="Maven: taglibs-standard-spec-1.2.1:taglibs-standard-spec:1.2.1" module-name="online-bookstore" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="online-bookstore/web/Web" />
+    </root>
+  </artifact>
+</component>

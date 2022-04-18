@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bear</groupId>
-    <artifactId>book</artifactId>
-    <name>book</name>
+    <artifactId>online-bookstore</artifactId>
+    <name>online-bookstore</name>
     <version>1.0</version>
     <packaging>war</packaging>
 
