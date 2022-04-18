@@ -36,7 +36,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!--  引入第三方 jar 包 maven 依赖  -->
+        <!--  引入本地 jar 包依赖  -->
         <dependency>
             <groupId>commons-beanutils-1.8.0</groupId>
             <artifactId>beanutils</artifactId>

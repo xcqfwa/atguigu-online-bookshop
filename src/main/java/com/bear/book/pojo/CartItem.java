@@ -21,6 +21,7 @@ public class CartItem {
         this.name = name;
         this.count = count;
         this.price = price;
+        this.totalPrice = this.price.multiply(new BigDecimal(this.count));
     }
 
     public Integer getId() {
@@ -56,7 +57,6 @@ public class CartItem {
     }
 
     public BigDecimal getTotalPrice() {
-        totalPrice = price.multiply(new BigDecimal(count));
         return totalPrice;
     }
 

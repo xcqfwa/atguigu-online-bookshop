@@ -24,8 +24,8 @@ public class UserDaoTest {
 
     @Test
     public void queryUserByUsernameAndPassword() {
-        String username = "bear";
-        String password = "bear";
+        String username = "admin";
+        String password = "admin";
         User user = userDao.queryUserByUsernameAndPassword(username, password);
         if (user != null) {
             System.out.println(user);
@@ -36,7 +36,7 @@ public class UserDaoTest {
 
     @Test
     public void saveUser() {
-        User user = new User(null, "springbear", "springbear", "springbear2020@163.com");
+        User user = new User(null, "admin", "admin", "admin@admin.com");
         int res = userDao.saveUser(user);
         if (res == 1) {
             System.out.println("用户信息保存成功");

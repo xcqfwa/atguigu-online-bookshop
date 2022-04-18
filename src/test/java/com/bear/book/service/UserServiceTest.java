@@ -14,7 +14,7 @@ public class UserServiceTest {
 
     @Test
     public void loginUser() {
-        if (userService.loginUser("bear", "bear") != null) {
+        if (userService.loginUser("admin", "admin") != null) {
             System.out.println("登录成功");
         } else {
             System.out.println("登录失败");
@@ -23,7 +23,7 @@ public class UserServiceTest {
 
     @Test
     public void registerUser() {
-        if (userService.registerUser(new User(null, "1", "1", "1@1.com"))) {
+        if (userService.registerUser(new User(null, "admin", "admin", "admin@admin.com"))) {
             System.out.println("注册成功");
         } else {
             System.out.println("注册失败");
@@ -32,7 +32,7 @@ public class UserServiceTest {
 
     @Test
     public void existsUsername() {
-        if (userService.existsUsername("bear")) {
+        if (userService.existsUsername("admin")) {
             System.out.println("用户名已存在");
         } else {
             System.out.println("用户名不存在");

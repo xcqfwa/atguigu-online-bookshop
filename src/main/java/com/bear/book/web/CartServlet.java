@@ -35,12 +35,14 @@ public class CartServlet extends BaseServlet {
             Cart cart = (Cart) req.getSession().getAttribute("cart");
             if (cart == null) {
                 cart = new Cart();
+                cart.addItem(cartItem);
                 req.getSession().setAttribute("cart", cart);
+            } else {
+                cart.addItem(cartItem);
             }
-            cart.addItem(cartItem);
             // 最后一次添加的商品的名称
             req.getSession().setAttribute("lastAddName", cartItem.getName());
-            resp.sendRedirect(req.getHeader("Referer"));
+            resp.sendRedirect(req.getContextPath() + "/client/bookServlet?action=pageByPrice");
         }
     }
 
