@@ -24,7 +24,6 @@ public class OrderServlet extends BaseServlet {
      * @param req  HttpServletRequest
      * @param resp HttpServletResponse
      * @throws IOException      exception
-     * @throws ServletException exception
      */
     protected void createOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         // 从 Session 域中获取购物车对象和用户对象

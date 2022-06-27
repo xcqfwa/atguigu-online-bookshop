@@ -27,9 +27,11 @@ public class ManagerFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) {
+        // 必须删除调用父类方法的语句，否则运行报错
     }
 
     @Override
     public void destroy() {
+        // 必须删除调用父类方法的语句，否则运行报错
     }
 }
