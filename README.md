@@ -22,7 +22,7 @@
 >
 > 4. 双击 Tomcat 安装目录下 `bin` 目录中的 `startup.bat` 启动 Tomcat
 >
-> 5. 在浏览器地址栏输入 `http://localhost:8080/online_bookstore` 即可访问
+> 5. 在浏览器地址栏输入 `http://localhost:8080/online-bookstore` 即可访问
 
 # 一、功能演示
 
